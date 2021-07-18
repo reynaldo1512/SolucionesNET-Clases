@@ -52,7 +52,125 @@ namespace Clase04.DAO
                 Console.WriteLine(ex.ToString());
             }
             return lista;
+
         }
+        public Boolean RegistrarRol(RolBEAN rol)
+        {
+            bool rpta = false;
+            try
+            {
+                using (var con = new SqlConnection(_StringConnection))
+                {
+                    using (var cmd = new SqlCommand("SP_ROL_Insert ", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@nombreRol", rol.NombreRol);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        rpta = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
+            return rpta;
+        }
+        public RolBEAN  BuscarRolId(int IdRol)
+        {
+
+
+           /* CREATE PROCEDURE SP_ROL_BuscarIdRol
+                    @idRol as int
+                        as
+                begin
+                select* from tb_Rol where idRol like @idRol;
+                end
+                go
+                   select* from tb_Rol
+           */
+
+            
+            RolBEAN rol = new RolBEAN();
+            
+           
+                using (var con = new SqlConnection(_StringConnection))
+                {
+                    using (var cmd = new SqlCommand("SP_ROL_BuscarIdRol", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idRol", IdRol);
+                        con.Open();
+                        using (var datos=cmd.ExecuteReader())
+                        {
+                            if(datos.Read())
+                            {
+                                
+                                rol.IdRol = Convert.ToInt32(datos[0]);
+                                rol.NombreRol = Convert.ToString(datos[1]);
+                                
+
+                            }
+
+                        }
+                        
+
+
+
+                    }
+
+                }
+
+            
+            return rol;
+        }
+
+        public List<RolBEAN> RegistroListadoRol(RolBEAN pRolBEAN)
+        {
+            List<RolBEAN> lista = new List<RolBEAN>();
+            RolBEAN rol;
+            try
+            {
+                using (var con = new SqlConnection(_StringConnection))
+                {
+                    using (var cmd = new SqlCommand("SP_ROL_InsertarListar", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@nombreRol", pRolBEAN.NombreRol);
+                        con.Open();
+                        using (var datos = cmd.ExecuteReader())
+                        {
+                            while (datos.Read())
+                            {
+                                rol = new RolBEAN();
+                                rol.IdRol = Convert.ToInt32(datos[0]);
+                                rol.NombreRol = Convert.ToString(datos[1]);
+                                lista.Add(rol);
+
+                            }
+
+                        }
+
+
+
+
+                    }
+
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            {
+
+            }
+        }
+
         
     }
 }
