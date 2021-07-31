@@ -1,0 +1,52 @@
+﻿@using DAO
+@model tb_Producto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar </h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.idProducto)
+<div class="form-horizontal">
+    <div class=" form-group">
+        @*Id Producto:*@
+        
+        @*@Html.LabelFor(model => model.idProducto, new { @class = "control-label" })*@
+
+
+        @Html.TextBoxFor(model => model.idProducto, htmlAttributes: new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @*Nombre Producto:*@
+        @Html.LabelFor(model => model.nombreProducto, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.nombreProducto, htmlAttributes: new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @*DescripcionProducto:*@
+        @Html.LabelFor(model => model.descripcionProducto, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.descripcionProducto, htmlAttributes: new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @*Estado Producto:*@
+        @Html.LabelFor(model => model.estadoProducto, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.estadoProducto, htmlAttributes: new { @class = "form-control" })
+
+    </div>
+
+    
+    
+
+
+    <div class="form-group">
+        <input type="submit" value="Registrar" class="btn btn-success" />
+    </div>
+
+</div>
+
+}
+

@@ -1,0 +1,43 @@
+﻿@using DAO
+@model List<tb_Categoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Categoria </h2>
+@Html.ActionLink("Crear", "New", "Categoria")
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+
+
+            <th>Detalle</th>
+            <th>Acciones</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idCategoria</td>
+                <td>@item.nombreCategoria</td>
+                <td>@Html.ActionLink("Editar","Edit",new { id=item.idCategoria})</td>
+                <td>@Html.ActionLink(" ", "Delete", new { id = item.idCategoria }, 
+                new
+               {
+                   @class = "btn btn-danger glyphicon glyphicon-remove",
+                   @tittle = "Eliminar",
+                   @onclick = "return confirm('desea eliminar la categoria?');"
+               })</td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+
+

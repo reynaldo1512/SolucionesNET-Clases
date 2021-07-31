@@ -1,0 +1,23 @@
+﻿@using DAO
+@model tb_Categoria
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Registrar Nueva Categoria </h2>
+
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    <div class="form-group">
+        @*Nombre Categoria:*@
+        @Html.LabelFor(model => model.nombreCategoria, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.nombreCategoria, htmlAttributes: new { @class = "form-control" })
+    </div>
+        <div class="form-group">
+            <input type="submit" value="Registrar" class="btn btn-success"/>
+        </div>
+
+    </div>
+}
+

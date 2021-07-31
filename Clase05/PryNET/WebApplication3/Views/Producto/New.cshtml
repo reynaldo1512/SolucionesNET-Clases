@@ -1,0 +1,33 @@
+﻿@using DAO
+@model tb_Producto
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Registrar Nuevo Producto </h2>
+
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    <div class=" form-group">
+        @Html.LabelFor(model => model.nombreProducto, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.nombreProducto, htmlAttributes: new { @class = "form-control" })
+        @Html.LabelFor(model => model.descripcionProducto, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.descripcionProducto, htmlAttributes: new { @class = "form-control" })
+        @Html.LabelFor(model => model.estadoProducto, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.estadoProducto, htmlAttributes: new { @class = "form-control" })
+
+
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Registrar" class="btn btn-success" />
+    </div>
+
+
+</div>
+    
+    
+   
+}
+
