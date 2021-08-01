@@ -1,0 +1,55 @@
+﻿@using DAO
+@model List<tbCliente>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<hr />
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Registro","Cliente")"><i class="fas fa-plus-circle"></i> </a>
+    Listado Clientes
+</h2>
+<hr />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>IdCliente</th>
+            <th>DNI</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Sexo</th>
+            <th>FechaNacimiento</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td style="width:50px">
+                <a href="@Url.Action("Detalle","Cliente",new { })" title="Ver detalle" style="color:green"><i class="fas fa-search"></i> </a>
+                <a href="@Url.Action("Actualizar","Cliente",new { })" title="Actualizar" style="color:green"><i class="fas fa-edit"></i></a>
+                <a href="" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+            </td>
+            <td>@item.IdCliente</td>
+            <td>@item.DNI</td>
+            <td>@item.NombreCliente</td>
+            <td>@item.ApellidosCliente</td>
+            <td>@item.Telefono</td>
+            <td>@item.Direccion</td>
+            <td>@item.Sexo</td>
+            <td>@item.FechaNacimiento</td>
+            
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+

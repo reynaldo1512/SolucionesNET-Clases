@@ -23,7 +23,9 @@ namespace CodeFirst
 
         [Required]
         public double precio  { get; set; }
-        
+
+        public List<SolicitudAnalisis> solicitudAnalises { get; set; }
+
 
     }
 }

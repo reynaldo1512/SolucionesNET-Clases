@@ -47,8 +47,8 @@ namespace CodeFirst
         [Column(TypeName = "datetime")]
         [Required]
         public DateTime FechaNacimiento  { get; set; }
-        
 
+        public List<SolicitudAnalisis> solicitudAnalises { get; set; }
     }
 }
     

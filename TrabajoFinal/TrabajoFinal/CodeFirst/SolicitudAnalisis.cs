@@ -11,10 +11,16 @@ namespace CodeFirst
     [Table("tbSolicitudAnalisis")]
     public class SolicitudAnalisis
     {
+        [Key]
+        [Required]
         public int IdSolicitud { get; set; }
         public int IdCliente { get; set; }
-        public int IdTipoExamen{ get; set; }
+        public int IdTipoExamen { get; set; }
         public DateTime FechaSolicitud { get; set; }
         public DateTime FechaEntrega { get; set; }
+
+
+        public Cliente cliente { get; set; }
+        public TipoExamen tipoExamen { get; set; }
     }
 }
