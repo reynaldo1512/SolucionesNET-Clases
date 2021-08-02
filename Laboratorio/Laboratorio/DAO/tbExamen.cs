@@ -12,28 +12,20 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Colaborador
+    public partial class tbExamen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_Colaborador()
+        public tbExamen()
         {
-            this.tb_ContactoCliente = new HashSet<tb_ContactoCliente>();
+            this.tbDetalleSolicitudExamen = new HashSet<tbDetalleSolicitudExamen>();
         }
     
-        public int idColaborador { get; set; }
-       
-        public string nombreColaborador { get; set; }
-        public string apellidoColaborador { get; set; }
-        public string numeroDocumentoColaborador { get; set; }
-        public int idRol { get; set; }
-        public int idTipoDocumento { get; set; }
-        public Nullable<int> idubigeo { get; set; }
-        public string nombUser { get; set; }
+        public int idExamen { get; set; }
+        public string nombreExamen { get; set; }
+        public decimal precioUnidad { get; set; }
+        public bool estado { get; set; }
     
-        public virtual tb_Ubigeo tb_Ubigeo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_ContactoCliente> tb_ContactoCliente { get; set; }
-        public virtual tb_Rol tb_Rol { get; set; }
-        public virtual tb_TipoDocumento tb_TipoDocumento { get; set; }
+        public virtual ICollection<tbDetalleSolicitudExamen> tbDetalleSolicitudExamen { get; set; }
     }
 }

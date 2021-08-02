@@ -1,0 +1,42 @@
+﻿@using DAO
+@model List<tb_Colaborador>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Numdoc</td>
+            <td>IdRol</td>
+
+            <td>IdTipoDocumento</td>
+            
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.idColaborador</td>
+            <td>@item.nombreColaborador</td>
+            <td>@item.apellidoColaborador</td>
+            <td>@item.numeroDocumentoColaborador</td>
+            <td>@item.idRol</td>
+            <td>@item.idTipoDocumento</td>
+            
+        </tr>
+        }
+
+
+    </tbody>
+    
+</table>
+

@@ -1,0 +1,41 @@
+﻿@using DAO
+@model List<tbExamen>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Nuevo","TipoExamen")"><i class="fas fa-plus-circle"></i> </a>
+    Listado de Tipo de Examen
+</h2>
+<hr />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>idExamen</th>
+            <th>NombreExamen</th>
+            <th>Precio</th>
+            <th>estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:50px">
+                    <a href="@Url.Action("Detalle","TipoExamen",new { id=item.idExamen})" title="Ver detalle" style="color:green"><i class="fas fa-search"></i> </a>
+                    <a href="@Url.Action("Actualizar","TipoExamen",new { id=item.idExamen})" title="Actualizar" style="color:green"><i class="fas fa-edit"></i></a>
+                    <a href="@Url.Action("Eliminar","TipoExamen")"  title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+                </td>
+                <td>@item.idExamen</td>
+                <td>@item.nombreExamen</td>
+                <td>@item.precioUnidad</td>
+                <td>@item.estado</td>
+                
+            </tr>
+        }
+
+    </tbody>
+
+</table>
