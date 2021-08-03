@@ -23,10 +23,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td style="width:50px">
-                    <a href="@Url.Action("Detalle","TipoExamen",new { id=item.idExamen})" title="Ver detalle" style="color:green"><i class="fas fa-search"></i> </a>
-                    <a href="@Url.Action("Actualizar","TipoExamen",new { id=item.idExamen})" title="Actualizar" style="color:green"><i class="fas fa-edit"></i></a>
-                    <a href="@Url.Action("Eliminar","TipoExamen")"  title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+                <td style="width:50px" align="center">
+                    
+                    <a href="@Url.Action("Editar","TipoExamen",new { id=item.idExamen})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
+                    <a href="@Url.Action("Eliminar","TipoExamen",new { id=item.idExamen})"  title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 <td>@item.idExamen</td>
                 <td>@item.nombreExamen</td>

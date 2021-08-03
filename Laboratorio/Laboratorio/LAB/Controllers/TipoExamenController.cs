@@ -30,5 +30,35 @@ namespace LAB.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            tbExamen exam = new tbExamen();
+            exam = conn.tbExamen.Find(id);
+            return View(exam);
+        }
+        [HttpPost]
+        public ActionResult Editar(tbExamen examnew)
+        {
+            tbExamen exam = new tbExamen();
+            exam = conn.tbExamen.Find(examnew.idExamen);
+            exam.nombreExamen = examnew.nombreExamen;
+            exam.precioUnidad = examnew.precioUnidad;
+            exam.estado = examnew.estado;
+            conn.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+        public ActionResult Eliminar(int id )
+        {
+            tbExamen exam = new tbExamen();
+            exam = conn.tbExamen.Find(id);
+            exam.estado = false;
+            conn.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
     }
+    
 }
