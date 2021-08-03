@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_Laboratorio3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbDetalleSolicitudExamen">
+          <Key>
+            <PropertyRef Name="idDetalleSolicitudExamen" />
+          </Key>
+          <Property Name="idDetalleSolicitudExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSolicitudExamen" Type="int" Nullable="false" />
+          <Property Name="idExamen" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="11" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbExamen">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreExamen" Type="nvarchar" MaxLength="50" />
+          <Property Name="precioUnidad" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbPaciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dni" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="nombrePaciente" Type="nvarchar" MaxLength="50" />
+          <Property Name="apellidoPaciente" Type="nvarchar" MaxLength="50" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="80" />
+          <Property Name="idSexo" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="9" />
+          <Property Name="fechaNacimiento" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbRol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRol" Type="nvarchar" MaxLength="30" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbSexo">
+          <Key>
+            <PropertyRef Name="idSexo" />
+          </Key>
+          <Property Name="idSexo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreSexo" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbSolicitudExamen">
+          <Key>
+            <PropertyRef Name="idSolicitudExamen" />
+          </Key>
+          <Property Name="idSolicitudExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPaciente" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="Total" Type="decimal" Precision="11" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar" MaxLength="20" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="9" />
+          <Property Name="contraseña" Type="nvarchar" MaxLength="20" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <Association Name="FK__tbDetalle__idExa__36B12243">
+          <End Role="tbExamen" Type="Self.tbExamen" Multiplicity="1" />
+          <End Role="tbDetalleSolicitudExamen" Type="Self.tbDetalleSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbExamen">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="tbDetalleSolicitudExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbDetalle__Preci__35BCFE0A">
+          <End Role="tbSolicitudExamen" Type="Self.tbSolicitudExamen" Multiplicity="1" />
+          <End Role="tbDetalleSolicitudExamen" Type="Self.tbDetalleSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSolicitudExamen">
+              <PropertyRef Name="idSolicitudExamen" />
+            </Principal>
+            <Dependent Role="tbDetalleSolicitudExamen">
+              <PropertyRef Name="idSolicitudExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbPacient__idSex__2D27B809">
+          <End Role="tbSexo" Type="Self.tbSexo" Multiplicity="1" />
+          <End Role="tbPaciente" Type="Self.tbPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSexo">
+              <PropertyRef Name="idSexo" />
+            </Principal>
+            <Dependent Role="tbPaciente">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSolicit__idPac__31EC6D26">
+          <End Role="tbPaciente" Type="Self.tbPaciente" Multiplicity="1" />
+          <End Role="tbSolicitudExamen" Type="Self.tbSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPaciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="tbSolicitudExamen">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSolicit__idUsu__32E0915F">
+          <End Role="tbUsuario" Type="Self.tbUsuario" Multiplicity="1" />
+          <End Role="tbSolicitudExamen" Type="Self.tbSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tbSolicitudExamen">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbUsuario__idRol__2A4B4B5E">
+          <End Role="tbRol" Type="Self.tbRol" Multiplicity="1" />
+          <End Role="tbUsuario" Type="Self.tbUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tbUsuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_Laboratorio3ModelStoreContainer">
+          <EntitySet Name="tbDetalleSolicitudExamen" EntityType="Self.tbDetalleSolicitudExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbExamen" EntityType="Self.tbExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPaciente" EntityType="Self.tbPaciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbRol" EntityType="Self.tbRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSexo" EntityType="Self.tbSexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSolicitudExamen" EntityType="Self.tbSolicitudExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUsuario" EntityType="Self.tbUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbDetalle__idExa__36B12243" Association="Self.FK__tbDetalle__idExa__36B12243">
+            <End Role="tbExamen" EntitySet="tbExamen" />
+            <End Role="tbDetalleSolicitudExamen" EntitySet="tbDetalleSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbDetalle__Preci__35BCFE0A" Association="Self.FK__tbDetalle__Preci__35BCFE0A">
+            <End Role="tbSolicitudExamen" EntitySet="tbSolicitudExamen" />
+            <End Role="tbDetalleSolicitudExamen" EntitySet="tbDetalleSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbPacient__idSex__2D27B809" Association="Self.FK__tbPacient__idSex__2D27B809">
+            <End Role="tbSexo" EntitySet="tbSexo" />
+            <End Role="tbPaciente" EntitySet="tbPaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSolicit__idPac__31EC6D26" Association="Self.FK__tbSolicit__idPac__31EC6D26">
+            <End Role="tbPaciente" EntitySet="tbPaciente" />
+            <End Role="tbSolicitudExamen" EntitySet="tbSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSolicit__idUsu__32E0915F" Association="Self.FK__tbSolicit__idUsu__32E0915F">
+            <End Role="tbUsuario" EntitySet="tbUsuario" />
+            <End Role="tbSolicitudExamen" EntitySet="tbSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbUsuario__idRol__2A4B4B5E" Association="Self.FK__tbUsuario__idRol__2A4B4B5E">
+            <End Role="tbRol" EntitySet="tbRol" />
+            <End Role="tbUsuario" EntitySet="tbUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_Laboratorio3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbDetalleSolicitudExamen">
+          <Key>
+            <PropertyRef Name="idDetalleSolicitudExamen" />
+          </Key>
+          <Property Name="idDetalleSolicitudExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSolicitudExamen" Type="Int32" Nullable="false" />
+          <Property Name="idExamen" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="11" Scale="2" />
+          <NavigationProperty Name="tbExamen" Relationship="Self.FK__tbDetalle__idExa__36B12243" FromRole="tbDetalleSolicitudExamen" ToRole="tbExamen" />
+          <NavigationProperty Name="tbSolicitudExamen" Relationship="Self.FK__tbDetalle__Preci__35BCFE0A" FromRole="tbDetalleSolicitudExamen" ToRole="tbSolicitudExamen" />
+        </EntityType>
+        <EntityType Name="tbExamen">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="precioUnidad" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbDetalleSolicitudExamen" Relationship="Self.FK__tbDetalle__idExa__36B12243" FromRole="tbExamen" ToRole="tbDetalleSolicitudExamen" />
+        </EntityType>
+        <EntityType Name="tbPaciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dni" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombrePaciente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="apellidoPaciente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="idSexo" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbSexo" Relationship="Self.FK__tbPacient__idSex__2D27B809" FromRole="tbPaciente" ToRole="tbSexo" />
+          <NavigationProperty Name="tbSolicitudExamen" Relationship="Self.FK__tbSolicit__idPac__31EC6D26" FromRole="tbPaciente" ToRole="tbSolicitudExamen" />
+        </EntityType>
+        <EntityType Name="tbRol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="tbUsuario" Relationship="Self.FK__tbUsuario__idRol__2A4B4B5E" FromRole="tbRol" ToRole="tbUsuario" />
+        </EntityType>
+        <EntityType Name="tbSexo">
+          <Key>
+            <PropertyRef Name="idSexo" />
+          </Key>
+          <Property Name="idSexo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreSexo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbPaciente" Relationship="Self.FK__tbPacient__idSex__2D27B809" FromRole="tbSexo" ToRole="tbPaciente" />
+        </EntityType>
+        <EntityType Name="tbSolicitudExamen">
+          <Key>
+            <PropertyRef Name="idSolicitudExamen" />
+          </Key>
+          <Property Name="idSolicitudExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPaciente" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="Total" Type="Decimal" Precision="11" Scale="2" />
+          <NavigationProperty Name="tbDetalleSolicitudExamen" Relationship="Self.FK__tbDetalle__Preci__35BCFE0A" FromRole="tbSolicitudExamen" ToRole="tbDetalleSolicitudExamen" />
+          <NavigationProperty Name="tbPaciente" Relationship="Self.FK__tbSolicit__idPac__31EC6D26" FromRole="tbSolicitudExamen" ToRole="tbPaciente" />
+          <NavigationProperty Name="tbUsuario" Relationship="Self.FK__tbSolicit__idUsu__32E0915F" FromRole="tbSolicitudExamen" ToRole="tbUsuario" />
+        </EntityType>
+        <EntityType Name="tbUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="tbRol" Relationship="Self.FK__tbUsuario__idRol__2A4B4B5E" FromRole="tbUsuario" ToRole="tbRol" />
+          <NavigationProperty Name="tbSolicitudExamen" Relationship="Self.FK__tbSolicit__idUsu__32E0915F" FromRole="tbUsuario" ToRole="tbSolicitudExamen" />
+        </EntityType>
+        <Association Name="FK__tbDetalle__idExa__36B12243">
+          <End Role="tbExamen" Type="Self.tbExamen" Multiplicity="1" />
+          <End Role="tbDetalleSolicitudExamen" Type="Self.tbDetalleSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbExamen">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="tbDetalleSolicitudExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbDetalle__Preci__35BCFE0A">
+          <End Role="tbSolicitudExamen" Type="Self.tbSolicitudExamen" Multiplicity="1" />
+          <End Role="tbDetalleSolicitudExamen" Type="Self.tbDetalleSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSolicitudExamen">
+              <PropertyRef Name="idSolicitudExamen" />
+            </Principal>
+            <Dependent Role="tbDetalleSolicitudExamen">
+              <PropertyRef Name="idSolicitudExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbPacient__idSex__2D27B809">
+          <End Role="tbSexo" Type="Self.tbSexo" Multiplicity="1" />
+          <End Role="tbPaciente" Type="Self.tbPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSexo">
+              <PropertyRef Name="idSexo" />
+            </Principal>
+            <Dependent Role="tbPaciente">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSolicit__idPac__31EC6D26">
+          <End Role="tbPaciente" Type="Self.tbPaciente" Multiplicity="1" />
+          <End Role="tbSolicitudExamen" Type="Self.tbSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPaciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="tbSolicitudExamen">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbUsuario__idRol__2A4B4B5E">
+          <End Role="tbRol" Type="Self.tbRol" Multiplicity="1" />
+          <End Role="tbUsuario" Type="Self.tbUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tbUsuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSolicit__idUsu__32E0915F">
+          <End Role="tbUsuario" Type="Self.tbUsuario" Multiplicity="1" />
+          <End Role="tbSolicitudExamen" Type="Self.tbSolicitudExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tbSolicitudExamen">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Conn_DB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbDetalleSolicitudExamen" EntityType="Self.tbDetalleSolicitudExamen" />
+          <EntitySet Name="tbExamen" EntityType="Self.tbExamen" />
+          <EntitySet Name="tbPaciente" EntityType="Self.tbPaciente" />
+          <EntitySet Name="tbRol" EntityType="Self.tbRol" />
+          <EntitySet Name="tbSexo" EntityType="Self.tbSexo" />
+          <EntitySet Name="tbSolicitudExamen" EntityType="Self.tbSolicitudExamen" />
+          <EntitySet Name="tbUsuario" EntityType="Self.tbUsuario" />
+          <AssociationSet Name="FK__tbDetalle__idExa__36B12243" Association="Self.FK__tbDetalle__idExa__36B12243">
+            <End Role="tbExamen" EntitySet="tbExamen" />
+            <End Role="tbDetalleSolicitudExamen" EntitySet="tbDetalleSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbDetalle__Preci__35BCFE0A" Association="Self.FK__tbDetalle__Preci__35BCFE0A">
+            <End Role="tbSolicitudExamen" EntitySet="tbSolicitudExamen" />
+            <End Role="tbDetalleSolicitudExamen" EntitySet="tbDetalleSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbPacient__idSex__2D27B809" Association="Self.FK__tbPacient__idSex__2D27B809">
+            <End Role="tbSexo" EntitySet="tbSexo" />
+            <End Role="tbPaciente" EntitySet="tbPaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSolicit__idPac__31EC6D26" Association="Self.FK__tbSolicit__idPac__31EC6D26">
+            <End Role="tbPaciente" EntitySet="tbPaciente" />
+            <End Role="tbSolicitudExamen" EntitySet="tbSolicitudExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbUsuario__idRol__2A4B4B5E" Association="Self.FK__tbUsuario__idRol__2A4B4B5E">
+            <End Role="tbRol" EntitySet="tbRol" />
+            <End Role="tbUsuario" EntitySet="tbUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSolicit__idUsu__32E0915F" Association="Self.FK__tbSolicit__idUsu__32E0915F">
+            <End Role="tbUsuario" EntitySet="tbUsuario" />
+            <End Role="tbSolicitudExamen" EntitySet="tbSolicitudExamen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_Laboratorio3ModelStoreContainer" CdmEntityContainer="Conn_DB">
+          <EntitySetMapping Name="tbDetalleSolicitudExamen">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbDetalleSolicitudExamen">
+              <MappingFragment StoreEntitySet="tbDetalleSolicitudExamen">
+                <ScalarProperty Name="idDetalleSolicitudExamen" ColumnName="idDetalleSolicitudExamen" />
+                <ScalarProperty Name="idSolicitudExamen" ColumnName="idSolicitudExamen" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbExamen">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbExamen">
+              <MappingFragment StoreEntitySet="tbExamen">
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="nombreExamen" ColumnName="nombreExamen" />
+                <ScalarProperty Name="precioUnidad" ColumnName="precioUnidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPaciente">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbPaciente">
+              <MappingFragment StoreEntitySet="tbPaciente">
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="nombrePaciente" ColumnName="nombrePaciente" />
+                <ScalarProperty Name="apellidoPaciente" ColumnName="apellidoPaciente" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbRol">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbRol">
+              <MappingFragment StoreEntitySet="tbRol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSexo">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbSexo">
+              <MappingFragment StoreEntitySet="tbSexo">
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="nombreSexo" ColumnName="nombreSexo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSolicitudExamen">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbSolicitudExamen">
+              <MappingFragment StoreEntitySet="tbSolicitudExamen">
+                <ScalarProperty Name="idSolicitudExamen" ColumnName="idSolicitudExamen" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsuario">
+            <EntityTypeMapping TypeName="BD_Laboratorio3Model.tbUsuario">
+              <MappingFragment StoreEntitySet="tbUsuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

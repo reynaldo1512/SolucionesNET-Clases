@@ -1,0 +1,66 @@
+﻿@using DAO
+@model tbPaciente
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>Nuevo</h2>
+
+@using (Html.BeginForm("Nuevo", "Paciente", FormMethod.Post))
+{
+
+    <div class="form-group">
+        <label>Numero DNI </label>
+        @Html.TextBoxFor(m => m.dni, new { @class = "form-control", @required = "required" })
+
+    </div>
+    <div class="form-group">
+        <label> Nombre </label>
+        @Html.TextBoxFor(m => m.nombrePaciente, new { @class = "form-control", @required = "required" })
+
+    </div>
+    <div class="form-group">
+        <label> Apellido</label>
+        @Html.TextBoxFor(m => m.apellidoPaciente, new { @class = "form-control", @required = "required" })
+
+    </div>
+    <div class="form-group">
+        <label> Direccion </label>
+        @Html.TextBoxFor(m => m.direccion, new { @class = "form-control", @required = "required" })
+
+    </div>
+    <div class="form-group">
+        <label> Sexo </label>
+        <select name="idSexo" class="form-control" required>
+            <option value="">Seleccione.....</option>
+       
+        @foreach (var item in ViewBag.ListaSexo)
+        {
+           <option value="@item.idSexo">@item.nombreSexo</option>
+        }
+        </select>
+
+    </div>
+    <div class="form-group">
+        <label> Telefono </label>
+        @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @required = "required" })
+
+    </div>
+    <div class="form-group">
+        <label> Fecha Nacimiento </label>
+        @Html.TextBoxFor(m => m.fechaNacimiento, new { @class = "form-control", @required = "required",@type="date" })
+
+    </div>
+   
+
+
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-success" />
+
+    </div>
+
+
+}
