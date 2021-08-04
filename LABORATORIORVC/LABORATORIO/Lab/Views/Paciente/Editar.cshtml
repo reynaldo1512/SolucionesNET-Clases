@@ -1,63 +1,59 @@
 ﻿@using DAO
-@model tbPaciente
+@model  tbPaciente
 @{
-    ViewBag.Title = "Nuevo";
+    ViewBag.Title = "Editar";
 }
 
 
+
 <h2>
-    <a style="float:right;color:green" href="@Url.Action("Index","Paciente")"><i class="fas fa-chevron-circle-left"></i> </a>Nuevo Paciente
+    <a style="float:right;color:green" href="@Url.Action("Index","Paciente")"><i class="fas fa-chevron-circle-left"></i> </a>Editar Paciente
 </h2>
 <hr />
-
-@using (Html.BeginForm("Nuevo", "Paciente", FormMethod.Post))
+@using (Html.BeginForm("Editar", "Paciente", FormMethod.Post))
 {
 
     <div class="form-group">
-        <label>Numero DNI </label>
-        @Html.TextBoxFor(m => m.dni, new { @class = "form-control", @required = "required" })
-
+        <label> id Paciente</label>
+        @Html.TextBoxFor(m => m.idPaciente, new { @class = "form-control", @required = "required", @readonly = "readonly" })
     </div>
     <div class="form-group">
-        <label> Nombre </label>
+        <label> DNI</label>
+        @Html.TextBoxFor(m => m.dni, new { @class = "form-control", @required = "required", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        <label>Nombre</label>
         @Html.TextBoxFor(m => m.nombrePaciente, new { @class = "form-control", @required = "required" })
-
     </div>
     <div class="form-group">
-        <label> Apellido</label>
+        <label>Apellido</label>
         @Html.TextBoxFor(m => m.apellidoPaciente, new { @class = "form-control", @required = "required" })
-
     </div>
     <div class="form-group">
-        <label> Direccion </label>
+        <label>Direccion </label>
         @Html.TextBoxFor(m => m.direccion, new { @class = "form-control", @required = "required" })
-
     </div>
     <div class="form-group">
-        <label> Sexo </label>
+        <label>Sexo </label>
         <select name="idSexo" class="form-control" required>
+
             <option value="">Seleccione.....</option>
 
             @foreach (var item in ViewBag.ListaSexo)
             {
-                <option value="@item.idSexo">@item.nombreSexo</option>
+                <option value="@item.idSexo" @(item.idSexo == Model.idSexo ? "selected" : "")>@item.nombreSexo</option>
             }
         </select>
 
     </div>
     <div class="form-group">
-        <label> Telefono </label>
+        <label>telefono </label>
         @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @required = "required" })
-
     </div>
     <div class="form-group">
-        <label> Fecha Nacimiento </label>
-        @Html.TextBoxFor(m => m.fechaNacimiento, new { @class = "form-control", @required = "required", @type = "date" })
-
+        <label>Fecha Nacimiento </label>
+        @Html.TextBoxFor(m => m.fechaNacimiento, new { @class = "form-control", @required = "required", @readonly = "readonly" })
     </div>
-
-
-
 
 
 
@@ -65,6 +61,4 @@
         <input type="submit" value="Guardar" class="btn btn-success" />
 
     </div>
-
-
 }

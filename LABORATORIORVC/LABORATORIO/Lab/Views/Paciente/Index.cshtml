@@ -5,9 +5,11 @@
 }
 
 <h2>
-    <a style="float:right;color:green" href="@Url.Action("Nuevo","Paciente")"><i class="fas fa-plus-circle"></i> </a>
+    <a style="float:right;color:green" href="@Url.Action("Nuevo", "Paciente")"><i class="fas fa-plus-circle"></i> </a>
     Listado de Pacientes
+   
 </h2>
+
 <hr />
 <table class="table table-bordered table-hover">
     <thead>
@@ -21,27 +23,33 @@
             <th>Id Sexo</th>
             <th>Telefono</th>
             <th>Fecha de Nacimiento</th>
+            <th>Solicitud Examen</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td style="width:50px" align="center">
+        <tr>
+            <td style="width:50px" align="center">
 
-                    <a href="@Url.Action("Editar","Paciente",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
-                    <a href="@Url.Action("Eliminar","Paciente",new { id=item.idPaciente})" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
-                </td>
-                <td>@item.idPaciente</td>
-                <td>@item.dni</td>
-                <td>@item.nombrePaciente</td>
-                <td>@item.apellidoPaciente</td>
-                <td>@item.direccion</td>
-                <td>@item.idSexo</td>
-                <td>@item.telefono</td>
-                <td>@item.fechaNacimiento</td>
+                <a href="@Url.Action("Editar","Paciente",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
+                <a href="@Url.Action("Eliminar","Paciente",new { id=item.idPaciente})" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+            </td>
+            <td>@item.idPaciente</td>
+            <td>@item.dni</td>
+            <td>@item.nombrePaciente</td>
+            <td>@item.apellidoPaciente</td>
+            <td>@item.direccion</td>
+            <td>@item.idSexo</td>
+            <td>@item.telefono</td>
+            <td>@item.fechaNacimiento</td>
+            <td style="width:50px" align="center">
 
-            </tr>
+                <a href="@Url.Action("Editar","Paciente",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
+                <a href="@Url.Action("Eliminar","Paciente",new { id=item.idPaciente})" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+            </td>
+
+        </tr>
         }
 
     </tbody>

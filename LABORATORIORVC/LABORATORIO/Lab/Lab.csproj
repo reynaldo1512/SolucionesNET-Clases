@@ -176,6 +176,7 @@
     <Content Include="Views\TipoExamen\Editar.cshtml" />
     <Content Include="Views\Paciente\Nuevo.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
+    <Content Include="Views\Paciente\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

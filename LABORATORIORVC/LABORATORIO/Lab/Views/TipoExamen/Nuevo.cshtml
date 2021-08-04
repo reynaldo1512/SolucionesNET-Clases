@@ -4,7 +4,11 @@
     ViewBag.Title = "Nuevo";
 }
 
-<h2>Nuevo</h2>
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Index","TipoExamen")"><i class="fas fa-chevron-circle-left"></i> </a>Nuevo tipo de examen
+</h2>
+<hr />
 
 @using (Html.BeginForm("Nuevo", "TipoExamen", FormMethod.Post))
 {
