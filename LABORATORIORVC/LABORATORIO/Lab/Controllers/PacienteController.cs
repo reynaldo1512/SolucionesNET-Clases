@@ -11,10 +11,25 @@ namespace Lab.Controllers
     {
         private Conn_DB conn = new Conn_DB();
         // GET: Paciente
-        public ActionResult Index()
+        
+
+        
+        public ActionResult Busqueda(string DNI)
         {
-            return View(conn.tbPaciente.ToList());
+            using (var db=new Conn_DB())
+            {
+                var busqueda = from s in db.tbPaciente select s;
+                if (!String.IsNullOrEmpty(DNI))
+                {
+                    busqueda = busqueda.Where(s => s.dni.Contains(DNI));
+                }
+                return View(busqueda.ToList());
+
+            }
+            
         }
+        
+
         [HttpGet]
         public ActionResult Nuevo()
         {
@@ -52,7 +67,7 @@ namespace Lab.Controllers
             paciente.telefono = pacientenew.telefono;
             paciente.fechaNacimiento = pacientenew.fechaNacimiento;
             conn.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Busqueda");
 
             
 

@@ -128,7 +128,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
+    <Compile Include="Controllers\SolicitudController.cs" />
     <Compile Include="Controllers\TipoExamenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,11 +143,18 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -157,6 +166,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="styles\font-awesome.min.css" />
+    <Content Include="styles\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -175,8 +186,11 @@
     <Content Include="Views\TipoExamen\Nuevo.cshtml" />
     <Content Include="Views\TipoExamen\Editar.cshtml" />
     <Content Include="Views\Paciente\Nuevo.cshtml" />
-    <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Paciente\Editar.cshtml" />
+    <Content Include="Views\Solicitud\Index.cshtml" />
+    <Content Include="Views\Paciente\Busqueda.cshtml" />
+    <Content Include="Views\Shared\_LoginPage.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -196,6 +210,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BEAN\BEAN.csproj">
+      <Project>{8c51261f-ae94-4030-ad59-79b0a2abde40}</Project>
+      <Name>BEAN</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAO\DAO.csproj">
       <Project>{6b463835-6aa7-4d1c-a20e-a093ed26f13b}</Project>
       <Name>DAO</Name>
