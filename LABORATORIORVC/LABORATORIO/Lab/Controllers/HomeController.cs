@@ -10,6 +10,11 @@ namespace Lab.Controllers
     {
         public ActionResult Index()
         {
+            string user = Convert.ToString(Session["usuario"]);
+            if (user == "")
+            {
+                return RedirectToAction("Login", "Login"); 
+            }
             return View();
         }
 

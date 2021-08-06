@@ -16,15 +16,27 @@ namespace Lab.Controllers
         
         public ActionResult Busqueda(string DNI)
         {
-            using (var db=new Conn_DB())
+            string user = Convert.ToString(Session["usuario"]);
+            if (user == "")
             {
-                var busqueda = from s in db.tbPaciente select s;
-                if (!String.IsNullOrEmpty(DNI))
-                {
-                    busqueda = busqueda.Where(s => s.dni.Contains(DNI));
-                }
-                return View(busqueda.ToList());
+                return RedirectToAction("Login", "Login");
+            }
 
+            else
+            {
+                using (var db = new Conn_DB())
+                {
+
+                    var busqueda = from s in db.tbPaciente select s;
+
+                    if (!String.IsNullOrEmpty(DNI))
+                    {
+                        busqueda = busqueda.Where(s => s.dni.Contains(DNI));
+                    }
+                    return View(busqueda.ToList());
+
+
+                }
             }
             
         }
@@ -41,7 +53,7 @@ namespace Lab.Controllers
         {
             conn.tbPaciente.Add(paci);
             conn.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Busqueda");
         }
         public ActionResult Editar(int id)
 

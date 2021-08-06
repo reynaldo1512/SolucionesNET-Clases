@@ -1,0 +1,34 @@
+﻿@using DAO
+@model tbSolicitudExamen
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Busqueda","Paciente")"><i class="fas fa-chevron-circle-left"></i> </a> Solicitud de Examen
+</h2>
+<hr />
+
+@using (Html.BeginForm("Nuevo", "Solicitud", FormMethod.Post))
+{
+
+<div class="form-group">
+    <label> Id Cliente</label>
+    <input value="@ViewBag.id" class="form-control text-box single-line" id="id" name="id" type="text" readonly />
+
+    
+</div>
+
+
+
+
+
+    
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-success" />
+
+    </div>
+
+
+}

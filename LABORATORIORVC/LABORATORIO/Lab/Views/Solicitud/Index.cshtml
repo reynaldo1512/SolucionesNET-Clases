@@ -20,6 +20,7 @@
             <th>Id Usuario</th>
             <th>Fecha</th>
             <th>Total</th>
+            <th>Detalle Solicitud</th>
             
             
         </tr>
@@ -27,18 +28,23 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td style="width:50px" align="center">
+        <tr>
+            <td style="width:50px" align="center">
 
-                    <a href="@Url.Action("Editar","Solicitud",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
-                    <a href="@Url.Action("Eliminar","Solicitud",new { id=item.idPaciente})" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
-                </td>
-                <td>@item.idSolicitudExamen</td>
-                <td>@item.idPaciente</td>
-                <td>@item.idUsuario</td>
-                <td>@item.fecha</td>
-                <td>@item.Total</td>
-            </tr>
+                <a href="@Url.Action("Editar","Solicitud",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
+                <a href="@Url.Action("Eliminar","Solicitud",new { id=item.idPaciente})" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+            </td>
+            <td>@item.idSolicitudExamen</td>
+            <td>@item.idPaciente</td>
+            <td>@item.idUsuario</td>
+            <td>@item.fecha</td>
+            <td>@item.Total</td>
+            <td style="width:50px" align="center">
+
+                <a href="@Url.Action("Editar","Solicitud",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-search"></i></a>
+                
+
+        </tr>
         }
 
     </tbody>

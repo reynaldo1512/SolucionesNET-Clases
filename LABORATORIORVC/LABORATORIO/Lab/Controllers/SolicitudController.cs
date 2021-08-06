@@ -13,9 +13,31 @@ namespace Lab.Controllers
         // GET: Solicitud
         public ActionResult Index()
         {
-            return View(conn.tbSolicitudExamen.ToList());
+            string user = Convert.ToString(Session["usuario"]);
+            if (user == "")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(conn.tbSolicitudExamen.ToList());
+            }
         }
 
+        [HttpGet]
+        public ActionResult Nuevo(int id)
+
+        {
+
+            ViewBag.id = id;
+           
+
+            
+            
+            return View();
+
+        }
+        
 
 
     }

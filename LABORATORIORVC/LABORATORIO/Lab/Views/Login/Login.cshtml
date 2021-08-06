@@ -1,8 +1,9 @@
-﻿@using BEAN
-@model LoginBEAN
+﻿@using DAO
+@model tbUsuario
 @{
     Layout = "~/Views/Shared/_LoginPage.cshtml";
 }
+
 @using (Html.BeginForm()) 
 {
 <div class="w3l-signinform">
@@ -27,10 +28,14 @@
 
             <button class="btn btn-primary btn-block" type="submit">Log In</button>
         </form>*@
+
                 <div class="form-group">
                     <div class="input-group">
                         <span><i class="fa fa-user" aria-hidden="true"></i></span>
-                        @Html.TextBoxFor(m => m.nombreUsuario, new { @class = "form-control", @placeholder = "User", @required = "required" })
+
+                        
+                        <input type="text" name="User" placeholder="User" class="form-control" required />
+                               @*@Html.TextBoxFor(m => m.nombreUsuario, new { @class = "form-control", @id = "User", @placeholder = "User", @required = "required" })*@
                     </div>
                 </div>
 
@@ -39,7 +44,10 @@
                 <div class="form-group">
                     <div class="input-group two-groop">
                         <span><i class="fa fa-key" aria-hidden="true"></i></span>
-                        @Html.TextBoxFor(m => m.contraseña, new { @class = "form-control", @placeholder = "Password", @required = "required",@type="Password" })
+                        <input type="password" name="password" placeholder="password" class="form-control" required />
+                        
+
+                    @*@Html.TextBoxFor(m => m.contraseña, new { @class = "form-control",@id="Password", @placeholder = "Password", @required = "required",@type="Password" })*@
                     </div>
                 </div>
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>

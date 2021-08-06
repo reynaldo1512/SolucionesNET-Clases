@@ -15,7 +15,8 @@
 
     <div class="form-group">
         <label>Numero DNI </label>
-        @Html.TextBoxFor(m => m.dni, new { @class = "form-control", @required = "required" })
+        
+        @Html.TextBoxFor(m => m.dni, new { @class = "form-control", @required = "required",@minlength="8",@maxlength="8" })
 
     </div>
     <div class="form-group">
@@ -47,7 +48,7 @@
     </div>
     <div class="form-group">
         <label> Telefono </label>
-        @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @required = "required" })
+        @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @required = "required", @minlength = "9", @maxlength = "9" })
 
     </div>
     <div class="form-group">

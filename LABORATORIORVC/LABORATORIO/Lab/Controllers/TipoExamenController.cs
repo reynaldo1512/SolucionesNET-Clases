@@ -13,7 +13,15 @@ namespace Lab.Controllers
         // GET: TipoExamen
         public ActionResult Index()
         {
-            return View(conn.tbExamen.ToList());
+            string user = Convert.ToString(Session["usuario"]);
+            if (user == "")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(conn.tbExamen.ToList());
+            }
         }
         [HttpGet]
         public ActionResult Nuevo()
