@@ -30,12 +30,15 @@ namespace Lab.Controllers
         {
 
             ViewBag.id = id;
+             List<tbExamen> examen = conn.tbExamen.Where(e => e.estado).ToList();
+
+            return View(examen);
+
+
            
 
             
             
-            return View();
-
         }
         
 
