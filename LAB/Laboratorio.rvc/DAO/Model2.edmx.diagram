@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f2913e0db674b919d1b9f89284de9d1" Name="Diagram1">
+        <EntityTypeShape EntityType="Conn_DB.tbExamen" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Conn_DB.tbPaciente" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Conn_DB.tbRol" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Conn_DB.tbSexo" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Conn_DB.tbSolicitudExamen" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Conn_DB.tbUsuario" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="Conn_DB.FK__tbSolicit__idExa__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="Conn_DB.FK__tbPacient__idSex__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="Conn_DB.FK__tbSolicit__idPac__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="Conn_DB.FK__tbUsuario__idRol__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="Conn_DB.FK__tbSolicit__idUsu__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

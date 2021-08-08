@@ -1,0 +1,68 @@
+﻿@using DAO
+@model tbSolicitudExamen
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Busqueda","Paciente")"><i class="fas fa-chevron-circle-left"></i> </a> Solicitud de Examen
+</h2>
+<hr />
+@using (Html.BeginForm("Nuevo", "Solicitud", FormMethod.Post))
+{
+
+
+    <div class="form-group">
+        <label> Id Paciente</label>
+        @Html.TextBoxFor(m => m.idPaciente, new { @class = "form-control", @Value = ViewBag.id, @required = "required", @readonly = "readonly" })
+
+    </div>
+
+    <div class="form-group">
+        <label> Usuario </label>
+        <select name="idUsuario" class="form-control" required>
+            <option value="">Seleccione.....</option>
+
+            @foreach (var item in ViewBag.Usuario)
+            {
+                <option value="@item.idUsuario">@item.nombreUsuario</option>
+            }
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+        <label> Tipo de Examen </label>
+        <select name="idExamen" class="form-control" required>
+            <option value="">Seleccione.....</option>
+
+            @foreach (var item in ViewBag.Examen)
+            {
+                <option value="@item.idExamen">@item.nombreExamen</option>
+            }
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Fecha Generacion</label>
+        @Html.TextBoxFor(m => m.fecha, new { @class = "form-control", @required = "required", @type = "date" })
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-success" />
+    </div>
+
+}
+
+
+
+
+
+
+
+
+
+
+

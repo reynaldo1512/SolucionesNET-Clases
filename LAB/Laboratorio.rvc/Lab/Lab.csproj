@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AA24EAB2-0A36-41FF-A3EA-4939A79280C5}</ProjectGuid>
+    <ProjectGuid>{0D247168-C6C2-4A1B-82CD-67093E5EF429}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -135,7 +135,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SolicitudExamenViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,20 +183,20 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\TipoExamen\Index.cshtml" />
-    <Content Include="Views\TipoExamen\Nuevo.cshtml" />
     <Content Include="Views\TipoExamen\Editar.cshtml" />
+    <Content Include="Views\TipoExamen\Nuevo.cshtml" />
+    <Content Include="Views\Shared\_LoginPage.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Paciente\Busqueda.cshtml" />
     <Content Include="Views\Paciente\Nuevo.cshtml" />
     <Content Include="Views\Paciente\Editar.cshtml" />
     <Content Include="Views\Solicitud\Index.cshtml" />
-    <Content Include="Views\Paciente\Busqueda.cshtml" />
-    <Content Include="Views\Shared\_LoginPage.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Solicitud\Nuevo.cshtml" />
-    <Content Include="Views\DetalleSolicitud\Index.cshtml" />
-    <Content Include="Views\DetalleSolicitud\Nuevo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\SolicitudExamen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -213,12 +212,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BEAN\BEAN.csproj">
-      <Project>{8c51261f-ae94-4030-ad59-79b0a2abde40}</Project>
-      <Name>BEAN</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{6b463835-6aa7-4d1c-a20e-a093ed26f13b}</Project>
+      <Project>{89843efd-c846-482a-a3f9-b4a535aa5af0}</Project>
       <Name>DAO</Name>
     </ProjectReference>
   </ItemGroup>
@@ -238,9 +233,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52147</DevelopmentServerPort>
+          <DevelopmentServerPort>51748</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52147/</IISUrl>
+          <IISUrl>http://localhost:51748/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

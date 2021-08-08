@@ -1,0 +1,65 @@
+﻿@using DAO
+@model List<tbPaciente>
+@{
+    ViewBag.Title = "Busqueda";
+}
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Nuevo","Paciente")"><i class="fas fa-plus-circle"></i> </a>
+    Listado Paciente
+</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar DNI : @Html.TextBox("DNI")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>idPaciente</th>
+            <th>DNI</th>
+            <th>Nombre Paciente</th>
+            <th>Apellido Paciente</th>
+            <th>Direccion</th>
+            <th>Id Sexo</th>
+            <th>Telefono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Solicitud Examen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:50px" align="center">
+
+                    <a href="@Url.Action("Editar","Paciente",new { id=item.idPaciente})" title="Editar" style="color:green"><i class="fas fa-edit"></i></a>
+                    <a href="@Url.Action("Eliminar","Paciente",new { id=item.idPaciente})" title="Eliminar" style="color:green"><i class="fas fa-trash-alt"></i></a>
+                </td>
+                <td>@item.idPaciente</td>
+                <td>@item.dni</td>
+                <td>@item.nombrePaciente</td>
+                <td>@item.apellidoPaciente</td>
+                <td>@item.direccion</td>
+                <td>@item.idSexo</td>
+                <td>@item.telefono</td>
+                <td>@item.fechaNacimiento</td>
+                <td style="width:50px" align="center">
+
+                    <a href="@Url.Action("Nuevo","Solicitud",new { id=item.idPaciente})" title="Agregar" style="color:green"><i class="fas fa-plus-circle"></i></a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+

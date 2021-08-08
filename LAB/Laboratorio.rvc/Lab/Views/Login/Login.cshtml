@@ -1,0 +1,74 @@
+﻿@using DAO
+@model tbUsuario
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="w3l-signinform">
+        <!-- container -->
+        <div class="wrapper">
+            <!-- main content -->
+            <div class="w3l-form-info">
+                <div class="w3_info">
+                    <h1>Bienvenido al Laboratorio</h1>
+
+                    <h2>Log In</h2>
+                    @*<form action="Login" method="post">
+                            <div class="input-group">
+                                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="text" placeholder="Username" required="">
+                            </div>
+
+                            <div class="input-group two-groop">
+                                <span><i class="fa fa-key" aria-hidden="true"></i></span>
+                                <input type="Password" placeholder="Password" required="">
+                            </div>
+
+                            <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                        </form>*@
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+
+
+                            <input type="text" name="User" placeholder="User" class="form-control" required />
+                            @*@Html.TextBoxFor(m => m.nombreUsuario, new { @class = "form-control", @id = "User", @placeholder = "User", @required = "required" })*@
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="input-group two-groop">
+                            <span><i class="fa fa-key" aria-hidden="true"></i></span>
+                            <input type="password" name="password" placeholder="password" class="form-control" required />
+
+
+                            @*@Html.TextBoxFor(m => m.contraseña, new { @class = "form-control",@id="Password", @placeholder = "Password", @required = "required",@type="Password" })*@
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Log In</button>
+
+
+
+
+                </div>
+            </div>
+            <!-- //main content -->
+        </div>
+        <!-- //container -->
+        <!-- footer -->
+        <div class="footer">
+            <p>
+                &copy; 2021
+            </p>
+        </div>
+    </div>
+
+
+}
+

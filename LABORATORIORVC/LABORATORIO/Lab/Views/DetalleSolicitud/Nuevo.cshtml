@@ -1,0 +1,148 @@
+﻿@using DAO
+@model List<tbExamen>
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Busqueda","Paciente")"><i class="fas fa-chevron-circle-left"></i> </a> Solicitud de Examen
+</h2>
+<hr />
+
+<div class="card col-span-12">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label> Id Paciente</label>
+                    <input value="@ViewBag.id" class="form-control text-box single-line" id="id" name="id" type="text" readonly />
+                </div>
+                <div class="form-group">
+                    <label>Examen</label>
+                    <select onchange="precio(this)" id="idExamen" class="form-control">
+                        <option>Seleccione ....</option>
+                        @foreach (tbExamen item in Model)
+                        {
+                            <option Precio="@item.precioUnidad" value="@item.idExamen">@item.nombreExamen</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Precio</label>
+                    <input readonly type="text" class="form-control" id="Precio" />
+                </div>
+
+            </div>
+            <button onclick="agregarFila()" class="btn btn-success" type="button">Agregar</button>
+
+
+        </div>
+
+
+
+
+        <div class="col-8">
+            <form action="~/Solicitud/Guardar" method="post">
+                <table id="TablaExamenes" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>CodigoExamen</th>
+                            <th>NombreExamen</th>
+                            <th>Precio</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-center">
+                                <h3>Total : <span id="total"></span></h3>
+                                <input type="hidden" name="Total" id="Total" />
+                            </td>
+
+                        </tr>
+                    </tfoot>
+
+                </table>
+                <button type="submit" class="btn btn-success btn-block">Guardar </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+@*<div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-success" />
+
+    </div>*@
+
+
+
+@section Scripts {
+
+
+    <script>
+        function precio(e) {
+            let _precio = $(e).find("option:selected");
+            $("#Precio").val(_precio.attr("precio"))
+        }
+        var cont = 0;
+
+        function agregarFila() {
+            let examen = $("#idExamen option:selected");
+            let total = $("#Total").val() || 0;
+
+            $('#TablaExamenes tbody').append(`
+                        <tr>
+                            <td>
+                            <input type="hidden" name="Examenes[${cont}].idExamen" value="${examen.val()}"/>
+                            ${examen.val()}</td>
+                            <td>${examen.text()}</td>
+                            <td>${examen.attr("precio")}</td>
+                        </tr>
+         `);
+            let suma = parseInt(total) + parseInt(examen.attr("precio"));
+            $("#total").text(suma);
+            $("#Total").val(suma);
+
+            cont++;
+        }
+
+             //function agregarFila() {
+             //    let examen = $("#idExamen option:selected");
+             //    let total = $("#Total").val() || 0;
+             //    var htmlTags = '<tr>' +
+             //        '<td>' + examen.val()+ '</td>' +
+             //        '<td>' + examen.text()+ '</td>' +
+             //        '<td>' + examen.attr("precio") + '</td>' +
+             //        '</tr>'
+             //    $('#TablaExamenes tbody').append(htmlTags);
+             //    let suma = parseInt(total) + parseInt(examen.attr("precio"));
+             //   $("#total").text(suma);
+             //   $("#Total").val(suma);
+
+             //   cont++;
+
+
+             //}
+
+             //('<tr>' +
+             //    '<td>' + examen.val() + '</td>' +
+             //    '<td>' + examen.text() + '</td>' +
+             //    '<td>' + examen.attr("precio") + '</td>' +
+             //    '</tr>')
+
+
+
+    </script>
+}
+
+

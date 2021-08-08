@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-4">
                     <div class="form-group">
-                        <label> Id Cliente</label>
+                        <label> Id Paciente</label>
                         <input value="@ViewBag.id" class="form-control text-box single-line" id="id" name="id" type="text" readonly />
                     </div>
                     <div class="form-group">
@@ -28,19 +28,23 @@
                             }
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label>Precio</label>
                         <input readonly type="text"  class="form-control" id="Precio" />
+                    </div>
+                    
                     </div>
                         <button onclick="agregarFila()" class ="btn btn-success" type="button">Agregar</button>
                     
 
                 </div>
 
+
     
             
                 <div class="col-8">
-                        <form action="" method="post">
+                        <form action="~/Solicitud/Guardar" method="post">
                             <table id="TablaExamenes" class="table table-bordered">
                                <thead>
                                     <tr>
@@ -63,7 +67,7 @@
 
                                     </tr>
                                 </tfoot>
-
+                                 
                             </table>
                             <button type="submit" class="btn btn-success btn-block">Guardar </button>
                         </form>
@@ -71,7 +75,7 @@
                
              </div>
          </div>
-     </div>
+  
         
         
    
@@ -96,12 +100,16 @@
          function agregarFila() {
              let examen = $("#idExamen option:selected");
              let total = $("#Total").val() || 0;
-             var input='<input type="hidden" name="Examenes[${cont}]">'
-             $('#TablaExamenes tbody').append('<tr>'+
-                 '<td>'+ examen.val() + '</td>' +
-                 '<td>' + examen.text() + '</td>' +
-                 '<td>' + examen.attr("precio") + '</td>' +
-                 '</tr>')
+             
+             $('#TablaExamenes tbody').append(`
+                    <tr>
+                        <td>
+                        <input type="hidden" name="Examenes[${cont}].idExamen" value="${examen.val()}"/>
+                        ${examen.val()}</td>
+                        <td>${examen.text()}</td>
+                        <td>${examen.attr("precio")}</td>
+                    </tr>
+     `);
              let suma = parseInt(total) + parseInt(examen.attr("precio"));
             $("#total").text(suma);
             $("#Total").val(suma);
@@ -126,6 +134,12 @@
 
 
          //}
+
+         //('<tr>' +
+         //    '<td>' + examen.val() + '</td>' +
+         //    '<td>' + examen.text() + '</td>' +
+         //    '<td>' + examen.attr("precio") + '</td>' +
+         //    '</tr>')
          
          
          

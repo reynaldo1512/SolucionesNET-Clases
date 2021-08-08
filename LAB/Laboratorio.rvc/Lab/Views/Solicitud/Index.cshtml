@@ -1,0 +1,48 @@
+﻿@using DAO
+@model List<tbSolicitudExamen>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>
+    Listado de Solicitud de Examenes
+
+</h2>
+
+<hr />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            
+            <th>Id Solicitud Examen</th>
+            <th>Id Paciente</th>
+            <th>Id Usuario</th>
+            <th>Fecha</th>
+            
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>@item.idSolicitudExamen</td>
+                <td>@item.idPaciente</td>
+                <td>@item.idUsuario</td>
+                <td>@item.fecha</td>
+                
+                
+
+                   
+
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+
