@@ -7,6 +7,7 @@
 <h2>
     <a style="float:right;color:green" href="@Url.Action("Nuevo","Paciente")"><i class="fas fa-plus-circle"></i> </a>
     Listado Paciente
+    
 </h2>
 
 @using (Html.BeginForm())
@@ -61,5 +62,17 @@
     </tbody>
 
 </table>
+<script type="text/javascript">
+    $.getScript("/Scripts/jsPaciente.js")
+        .done(function (script, textStatus) {
+            //console.log(textStatus);
+        })
+
+        .fail(function (jqxhr, settings, exception) {
+            console.log("fallo carga script js");
+            console.log(exception);
+        });
+</script>
+
 
 

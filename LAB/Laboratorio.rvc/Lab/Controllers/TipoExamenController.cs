@@ -54,6 +54,8 @@ namespace Lab.Controllers
             return RedirectToAction("Index");
 
         }
+
+
         public ActionResult Eliminar(int id)
         {
             tbExamen exam = new tbExamen();
